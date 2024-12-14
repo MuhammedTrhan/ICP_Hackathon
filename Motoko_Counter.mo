@@ -1,4 +1,4 @@
-actor Echo {
+actor {
 
   stable var counter : Nat = 0;
 
