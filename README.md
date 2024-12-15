@@ -18,8 +18,8 @@ CelestialData aims to revolutionize how scientists and researchers store and acc
 
 ## Project Roadmap / Future Plans
 
-Software Development Plan for CelestialData
-Step 1: Smart Contract Development
+Software Development Plan for CelestialData 
+### Step 1: Smart Contract Development
 Focus on the core logic for celestial body storage and retrieval. Implement the following core functions:
 
 Storing Celestial Bodies:
@@ -39,11 +39,11 @@ deleteBody: Remove a celestial body from the database.
 Data Management:
 
 Use a Trie for efficient storage and retrieval of celestial body records indexed by unique IDs.
-Step 2: Testing and Optimization
+### Step 2: Testing and Optimization
 Write unit tests for all smart contract functions to ensure reliability.
 Test edge cases (e.g., incomplete data or invalid IDs).
 Optimize data structure and algorithms for performance on the Solana blockchain.
-Step 3: Front-End Development
+### Step 3: Front-End Development
 Build a user-friendly interface to interact with the smart contract.
 
 Features:
@@ -55,18 +55,19 @@ Technologies:
 
 Framework: React.js or Vue.js.
 Solana Integration: Use libraries like @solana/web3.js to connect to the blockchain.
-Step 4: Integrating Front-End with Smart Contracts
+### Step 4: Integrating Front-End with Smart Contracts
 Use Solana wallet integration (e.g., Phantom Wallet) to allow user authentication and transactions.
 Connect UI actions (e.g., "Add Celestial Body") to smart contract functions.
-Step 5: Deployment and Testing
+### Step 5: Deployment and Testing
 Deploy the smart contract on the Solana testnet for initial testing.
 Test end-to-end functionality with the front-end application.
 Address any bugs or inefficiencies.
-Step 6: Final Deployment and Launch
+### Step 6: Final Deployment and Launch
 Deploy the smart contract on the Solana mainnet.
 Host the front-end application on a reliable platform (e.g., Vercel, Netlify).
 Provide documentation and a user guide for astronomers and researchers.
 This plan ensures a secure, scalable, and user-friendly implementation of CelestialData.
+
 ## The Tach We Use
 
 - Motoko Playground
