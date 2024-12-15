@@ -59,7 +59,9 @@ Gather user feedback for future updates and improvements.
 
 ## The Tach We Use
 
-Motoko Playground
+- Motoko Playground
+- ChatGPT
+- IMGCREATOR
 
 ## Smart Contact
 
