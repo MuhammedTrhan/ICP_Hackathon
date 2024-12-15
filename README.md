@@ -1,6 +1,7 @@
 # CelestialData
 
-project visual
+![Screenshot 2024-12-15 145121](https://github.com/user-attachments/assets/bfc78391-5a87-4ccd-8e62-1ba35632b069)
+
 
 ## About Me
 
