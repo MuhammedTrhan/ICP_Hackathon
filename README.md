@@ -63,8 +63,8 @@ Motoko Playground
 
 ## Smart Contact
 
-+90 535 525 3944
-meheme4434@gmail.com
+- +90 535 525 3944 
+- meheme4434@gmail.com
 
 ## Setup Environment
 
