@@ -35,6 +35,62 @@ actor main {
     return result;
   };
 
+  // Get contents of a celestial body by ID
+  public func getContents(id: CelestialBodyId): async List.List<Contents> {
+    let result = Trie.find(
+      celestialbodies,
+      key(id),
+      Nat32.equal);
+
+    // Handle Option explicitly
+    switch (result) {
+      case (?CelestialBody) {
+        return CelestialBody.contents; // Return the contents if the celestial body exists
+      };
+      case null {
+        return null; // Return empty if the celestial body does not exist
+      };
+    };
+  };
+
+  // Get name of a celestial body by ID
+  public func getName(id: CelestialBodyId): async Text {
+    let result = Trie.find(
+      celestialbodies,
+      key(id),
+      Nat32.equal);
+
+    // Handle Option explicitly
+    switch (result) {
+      case (?CelestialBody) {
+        return CelestialBody.name; // Return the name if the celestial body exists
+      };
+      case null {
+        return "Empty"; // Return empty if the celestial body does not exist
+      };
+    };
+  };
+
+  // Get body type of a celestial body by ID
+  public func getBodyType(id: CelestialBodyId): async Text {
+    let result = Trie.find(
+      celestialbodies,
+      key(id),
+      Nat32.equal);
+
+    // Handle Option explicitly
+    switch (result) {
+      case (?CelestialBody) {
+        return CelestialBody.bodyType; // Return the body type if the celestial body exists
+      };
+      case null {
+        return "Empty"; // Return empty if the celestial body does not exist
+      };
+    };
+  };
+
+
+
   public func storeBody (newBody : CelestialBody) : async Nat32 {
     let id = next;
     next += 1;
@@ -69,6 +125,38 @@ actor main {
     
     return exists;
   };
+
+   public func addContentToBody (id : CelestialBodyId , newContent : Contents) : async Bool {
+    let result = Trie.find(
+      celestialbodies,
+      key(id),
+      Nat32.equal
+    );
+
+    let exists = Option.isSome(result);
+
+    if (exists) {
+      let oldContents = await main.getContents(id);
+      let mergedContents = List.push<Contents>(newContent, oldContents);
+      //let mergedContents = List.merge<Contents>(oldContents, newContents);
+
+      let newBody : CelestialBody = {
+        name = await main.getName(id);
+        bodyType = await main.getBodyType(id);
+        contents = mergedContents;
+        };
+
+      celestialbodies := Trie.replace (
+        celestialbodies,
+        key(id),
+        Nat32.equal,
+        ?newBody
+      ).0;
+    };
+
+    return exists;
+  };
+
 
   public func deleteBody (id : CelestialBodyId) : async Bool {
     let result = Trie.find(
@@ -105,17 +193,17 @@ actor main {
     };
 
     // Extract the celestial body (unwrap the Option)
-    let celestialBody : Trie.Trie<CelestialBodyId , CelestialBody> = Option.get(result);
+    let celestialBody : CelestialBody = Option.unwrap(result);
 
     // Initialize the total percentage
     var totalPercentage: Float = 0.0;
 
     // Iterate through the contents of the celestial body
-    List.iter(
+    List.iterate(
+        celestialBody.contents,
         func (content: Contents) {
             totalPercentage += content.percentage; // Accumulate the percentage
-        },
-        celestialBody.contents
+        }
     );
 
     // Check if the total percentage equals 100.0
