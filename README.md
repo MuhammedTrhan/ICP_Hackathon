@@ -22,21 +22,21 @@ Software Development Plan for CelestialData
 ### Step 1: Smart Contract Development
 Focus on the core logic for celestial body storage and retrieval. Implement the following core functions:
 
-1. Storing Celestial Bodies:
+#### 1. Storing Celestial Bodies:
 - storeBody: Add a new celestial body with its name, type, and contents.
 - addContentToBody: Add or update specific contents for an existing celestial body.
 
-2. Retrieving Data:
+#### 2. Retrieving Data:
 - getBody, getContents, getName, getBodyType: Retrieve celestial body details like name, type, and composition.
 
-3. Validation:
+#### 3. Validation:
 - isBodyComplete: Validate if the contents of a celestial body sum to 100%.
 
-4. Updating and Deleting:
+#### 4. Updating and Deleting:
 - updateBody: Update existing celestial body data.
 - deleteBody: Remove a celestial body from the database.
 
-5. Data Management:
+#### 5. Data Management:
 
 - Use a Trie for efficient storage and retrieval of celestial body records indexed by unique IDs.
 
@@ -48,12 +48,12 @@ Focus on the core logic for celestial body storage and retrieval. Implement the 
 ### Step 3: Front-End Development
 Build a user-friendly interface to interact with the smart contract.
 
-1. Features:
+#### 1. Features:
 - Data Entry Forms: Allow users to add celestial bodies and their details.
 - Validation Tool: Automatically check if the body’s composition sums to 100%.
 - Data Visualization: Display stored celestial data in a tabular or graphical format.
 
-2. Technologies:
+#### 2. Technologies:
 - Framework: React.js or Vue.js.
 - Solana Integration: Use libraries like @solana/web3.js to connect to the blockchain.
 
