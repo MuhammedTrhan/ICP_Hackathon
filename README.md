@@ -22,50 +22,54 @@ Software Development Plan for CelestialData
 ### Step 1: Smart Contract Development
 Focus on the core logic for celestial body storage and retrieval. Implement the following core functions:
 
-Storing Celestial Bodies:
+1. Storing Celestial Bodies:
+- storeBody: Add a new celestial body with its name, type, and contents.
+- addContentToBody: Add or update specific contents for an existing celestial body.
 
-storeBody: Add a new celestial body with its name, type, and contents.
-addContentToBody: Add or update specific contents for an existing celestial body.
-Retrieving Data:
+2. Retrieving Data:
+- getBody, getContents, getName, getBodyType: Retrieve celestial body details like name, type, and composition.
 
-getBody, getContents, getName, getBodyType: Retrieve celestial body details like name, type, and composition.
-Validation:
+3. Validation:
+- isBodyComplete: Validate if the contents of a celestial body sum to 100%.
 
-isBodyComplete: Validate if the contents of a celestial body sum to 100%.
-Updating and Deleting:
+4. Updating and Deleting:
+- updateBody: Update existing celestial body data.
+- deleteBody: Remove a celestial body from the database.
 
-updateBody: Update existing celestial body data.
-deleteBody: Remove a celestial body from the database.
-Data Management:
+5. Data Management:
 
-Use a Trie for efficient storage and retrieval of celestial body records indexed by unique IDs.
+- Use a Trie for efficient storage and retrieval of celestial body records indexed by unique IDs.
+
 ### Step 2: Testing and Optimization
-Write unit tests for all smart contract functions to ensure reliability.
-Test edge cases (e.g., incomplete data or invalid IDs).
-Optimize data structure and algorithms for performance on the Solana blockchain.
+- Write unit tests for all smart contract functions to ensure reliability.
+- Test edge cases (e.g., incomplete data or invalid IDs).
+- Optimize data structure and algorithms for performance on the Solana blockchain.
+
 ### Step 3: Front-End Development
 Build a user-friendly interface to interact with the smart contract.
 
-Features:
+1. Features:
+- Data Entry Forms: Allow users to add celestial bodies and their details.
+- Validation Tool: Automatically check if the body’s composition sums to 100%.
+- Data Visualization: Display stored celestial data in a tabular or graphical format.
 
-Data Entry Forms: Allow users to add celestial bodies and their details.
-Validation Tool: Automatically check if the body’s composition sums to 100%.
-Data Visualization: Display stored celestial data in a tabular or graphical format.
-Technologies:
+2. Technologies:
+- Framework: React.js or Vue.js.
+- Solana Integration: Use libraries like @solana/web3.js to connect to the blockchain.
 
-Framework: React.js or Vue.js.
-Solana Integration: Use libraries like @solana/web3.js to connect to the blockchain.
 ### Step 4: Integrating Front-End with Smart Contracts
-Use Solana wallet integration (e.g., Phantom Wallet) to allow user authentication and transactions.
-Connect UI actions (e.g., "Add Celestial Body") to smart contract functions.
+- Use Solana wallet integration (e.g., Phantom Wallet) to allow user authentication and transactions.
+- Connect UI actions (e.g., "Add Celestial Body") to smart contract functions.
+
 ### Step 5: Deployment and Testing
-Deploy the smart contract on the Solana testnet for initial testing.
-Test end-to-end functionality with the front-end application.
-Address any bugs or inefficiencies.
+- Deploy the smart contract on the Solana testnet for initial testing.
+- Test end-to-end functionality with the front-end application.
+- Address any bugs or inefficiencies.
+
 ### Step 6: Final Deployment and Launch
-Deploy the smart contract on the Solana mainnet.
-Host the front-end application on a reliable platform (e.g., Vercel, Netlify).
-Provide documentation and a user guide for astronomers and researchers.
+- Deploy the smart contract on the Solana mainnet.
+- Host the front-end application on a reliable platform (e.g., Vercel, Netlify).
+- Provide documentation and a user guide for astronomers and researchers.
 This plan ensures a secure, scalable, and user-friendly implementation of CelestialData.
 
 ## The Tach We Use
