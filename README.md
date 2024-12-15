@@ -83,54 +83,115 @@ This plan ensures a secure, scalable, and user-friendly implementation of Celest
 - +90 535 525 3944 
 - meheme4434@gmail.com
 
-## Setup Environment
+## Installation Guide for CelestialData
+Follow these steps to install and run the CelestialData project:
 
-Prerequisites
-Before installing and running the project, ensure you have the following installed:
+### 1. Prerequisites
+Ensure the following tools and libraries are installed on your system:
+- Node.js (v16 or later) and npm or yarn.
+- Rust and Solana CLI:
+- Install Rust: https://rustup.rs/
+- Install Solana CLI: Solana CLI Installation Guide
+- Anchor Framework (for smart contract deployment):
+cargo install --git https://github.com/coral-xyz/anchor --tag v0.27.0 anchor-cli --locked
+- A supported Solana wallet (e.g., Phantom Wallet).
 
-Node.js (v16 or higher)
-Yarn or npm
-Solana CLI
-A Solana wallet (e.g., Phantom, Solflare)
-Installation
-Clone the Repository
+### 2. Clone the Repository
+- Clone the project to your local machine:
+git clone <repository-link>
+cd CelestialData
 
-git clone https://github.com/yourusername/celestialdata.git  
-cd celestialdata  
-Install Dependencies
-Navigate to the frontend and smart-contract directories and install dependencies:
+### 3. Install Dependencies
+Install the dependencies for the smart contract and front-end application.
 
-# Install smart contract dependencies  
-cd smart-contract  
-yarn install  
+- Smart Contract:
+cd smart-contract
+anchor build
 
-# Install front-end dependencies  
-cd ../frontend  
-yarn install  
-Compile and Deploy the Smart Contract
+- Front-End: Navigate to the frontend directory and install dependencies:
+cd ../frontend
+npm install
 
-Compile the smart contract:
-solana program deploy path/to/your/contract.so  
-Note the deployed program ID for later use.
-Configure the Front-End
+Or, if using Yarn:
+yarn install
 
-Open frontend/src/config.js and update the program ID and Solana network details:
-javascript
-export const SOLANA_NETWORK = "https://api.mainnet-beta.solana.com";  
-export const PROGRAM_ID = "Your_Deployed_Program_ID";  
-Run the Front-End Application
-Start the development server:
+### 4. Configure Solana Wallet
+Set up your wallet and network:
+- Connect Wallet: Ensure you have a Solana wallet (e.g., Phantom).
+- Set Cluster: Configure Solana CLI to use the testnet:
+solana config set --url https://api.testnet.solana.com
 
+### 5. Deploy the Smart Contract
+Navigate to the smart-contract directory and deploy the program:
+cd ../smart-contract
+anchor deploy
+Take note of the program's public key, as it will be required for the front-end.
 
-cd frontend  
-yarn start  
-The application will be available at http://localhost:3000.
+### 6. Configure the Front-End
+In the frontend directory, create a .env file and add the deployed smart contract's public key and Solana cluster details:
+REACT_APP_SOLANA_NETWORK=https://api.testnet.solana.com
+REACT_APP_PROGRAM_ID=<your_program_public_key>
 
-Usage
-Enter celestial body details in the provided form.
-Use the "Validate Composition" button to check the entered data.
-Save the data to the blockchain.
-Retrieve or update records as needed.
-License
+### 7. Run the Front-End Application
+Start the front-end development server:
+npm start
+
+Or, if using Yarn:
+yarn start
+The application will be accessible at http://localhost:3000.
+
+### 8. Optional: Deploy Front-End
+To deploy the front-end for public access, use platforms like Vercel or Netlify:
+npm run build
+Then, upload the build folder to your hosting service.
+
+Your CelestialData project is now ready to use!
+
+## How to Use CelestialData
+CelestialData provides a user-friendly interface to store, manage, and validate information about celestial bodies on the Solana blockchain. Here’s a step-by-step guide to using the software:
+
+### 1. Access the Application
+- Open the CelestialData front-end application in your browser. If running locally, navigate to http://localhost:3000.
+- Connect your Solana wallet (e.g., Phantom) to enable blockchain interactions.
+
+### 2. Add a Celestial Body
+- Go to the "Add Celestial Body" section.
+- Fill in the required fields:
+- Name: Enter the name of the celestial body (e.g., "Mars").
+- Type: Specify the type of the body (e.g., planet, star, asteroid).
+- Contents: Enter the composition of the celestial body (e.g., "Iron: 32%, Oxygen: 30%").
+- Click Submit to store the data on the blockchain. The system will return a unique ID for the celestial body.
+
+### 3. View Stored Data
+- Navigate to the "View Celestial Body" section.
+- Enter the unique ID of a celestial body to retrieve its details, including:
+- Name
+- Type
+- Composition (contents and their percentages)
+- Use this feature to review data stored on the blockchain.
+
+### 4. Update Celestial Body Details
+- In the "Update Celestial Body" section, enter the unique ID of the celestial body you wish to update.
+- Modify the name, type, or composition as needed.
+- Click Update to save the changes to the blockchain.
+
+### 5. Validate Composition
+- Use the "Validate Celestial Body" feature to check if the contents of a celestial body add up to 100%.
+- Enter the unique ID of the celestial body, and the system will confirm whether the data is complete.
+
+### 6. Delete a Celestial Body
+- In the "Delete Celestial Body" section, enter the unique ID of the body you want to remove.
+- Confirm the deletion to erase the record from the blockchain.
+
+### 7. Additional Features
+- Add New Contents: If needed, add additional contents to an existing celestial body using its unique ID.
+- Explore Database: Browse through stored celestial bodies to analyze their data.
+
+### 8. Collaborate and Share
+- Share unique IDs with collaborators to allow them to view or update celestial body data.
+- Use the decentralized database for research, collaboration, and educational purposes.
+
+CelestialData combines blockchain technology with a user-friendly interface to simplify celestial body data management. Start exploring the cosmos today!
+
+## License
 This project is licensed under the MIT License.
-
